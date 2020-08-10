@@ -66,7 +66,7 @@ def validate_dtd_sons(element, dtd_sons, element_sons):
                 return error_message
             elif dtd_son[len(dtd_son)-1] == "?" and count > 1:
                 return error_message
-            elif not has_symbol(dtd_son) and count == 0:
+            elif not has_symbol(dtd_son) and count is not 1:
                 return error_message
     return True
 
@@ -104,7 +104,8 @@ def start_validation(xml_file, dtd_file):
     df = list(dtd_file).copy()
     if validate_dtd(xf, df):
         print("Good xml!")
-    return True
+        return True
+    return False
 
 
 
