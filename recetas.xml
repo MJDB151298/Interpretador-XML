@@ -1,0 +1,75 @@
+
+<recetas>
+    <receta nombre = 'Croquetas'>
+        <ingredientes>
+            <ingrediente>
+                <nombre>Aceite de oliva</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Harina</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Leche</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Huevo</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Pan Rallado</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Nuez moscada</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Sal</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+        </ingredientes>
+        <procedimiento>Muy dificil</procedimiento>
+    </receta>
+
+    <receta nombre = 'Pastel'>
+        <ingredientes>
+            <ingrediente>
+                <nombre>Chocolate</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Levadura</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Leche</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Azúcar</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+            <ingrediente>
+                <nombre>Cereza</nombre>
+                <calorias>100</calorias>
+                <grasas>100</grasas>
+            </ingrediente>
+        </ingredientes>
+        <procedimiento>Depende del tamaño</procedimiento>
+    </receta>
+
+</recetas>
