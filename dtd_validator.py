@@ -70,6 +70,7 @@ def validate_dtd_sons(element, dtd_sons, element_sons):
                 return error_message
     return True
 
+
 def validate_dtd(xml_file, dtd_file):
     element_list = []
     attribute_list = []
@@ -89,20 +90,22 @@ def validate_dtd(xml_file, dtd_file):
             attribute = get_dtd_attribute(dtd_line)
             attribute_list.append([element, attribute])
         element_list.append(element)
+
     attribute_validation = validate_xml_attributes(attribute_list, xml_file)
     if attribute_validation is not True:
         print(attribute_validation)
         return False
+
     grammar_validation = validate_xml_grammar(element_list, xml_file)
     if grammar_validation is not True:
         print(grammar_validation)
         return False
+
     return True
 
+
 def start_validation(xml_file, dtd_file):
-    xf = list(xml_file).copy()
-    df = list(dtd_file).copy()
-    if validate_dtd(xf, df):
+    if validate_dtd(list(xml_file).copy(), list(dtd_file).copy()):
         print("Good xml!")
         return True
     return False
