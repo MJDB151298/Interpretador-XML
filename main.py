@@ -20,4 +20,19 @@ if dtd_validator.start_validation(open("recetas.xml"), open("validator.dtd")):
                  grasas = parser.find_tag_content(son)
         grasa_caloria_info.append([nombre, calorias, grasas])
 
-    print(grasa_caloria_info)
+    #print(grasa_caloria_info)
+
+def get_platos_ingredientes(xml_file, dtd_file):
+    if dtd_validator.start_validation(xml_file, dtd_file):
+        in_receta = False
+    nombre_receta = ""
+    platos_ingredientes = []
+    for x in data:
+        if x['name'] == 'receta':
+            in_receta = True
+            nombre_receta = x['value']
+        if x['name'] == 'receta' and in_receta:
+            nombre_receta = x['value']
+        if x['name'] == 'nombre' and in_receta == True:
+            platos_ingredientes.append("plato_ingrediente(" + nombre_receta + "," + x['content'] + ")")
+    return platos_ingredientes
