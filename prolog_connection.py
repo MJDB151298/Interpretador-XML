@@ -5,6 +5,7 @@ prolog = Prolog()
 prolog.consult("Hechos.pl")
 plato.plato_ingrediente(prolog)
 plato.plato_procedimiento(prolog)
+plato.plato_ingrediente_lista(prolog)
 
 Q1= input("\n¿Qué plato puedo preparar con el ingrediente...?")
 
@@ -35,3 +36,6 @@ for valorQ3 in valorfinalQ3:
 #Q4
 
 print("\n**¿Cuáles platos implican usar la batidora (ej.: Batir la masa) como procedimiento?**\n")
+ingrediente_batidora = "batidora"
+valorfinalQ4 = list(prolog.query("noIngrediente(%s, Plato)" % ingrediente_batidora))
+

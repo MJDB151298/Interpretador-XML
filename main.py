@@ -62,22 +62,28 @@ def get_platos_ingredientes_list(xml_file, dtd_file):
         in_receta = False
         nombre_receta = ""
         platos_ingredientes = []
-        lista_ingredientes = []
-        for x in data:
-            print(lista_ingredientes)
-            if x['name'] == 'receta':
+        lista_ingredientes = ""
+        for i in range(0, len(data)):    
+            if data[i]['name'] == 'receta':    
                 in_receta = True
-                nombre_receta = x['value']
-            if x['name'] == 'receta' and in_receta:
-                platos_ingredientes.append([nombre_receta, copy.deepcopy(lista_ingredientes)])
-                nombre_receta = x['value']
-                lista_ingredientes = []
-            if x['name'] == 'nombre' and in_receta == True:  
-                lista_ingredientes.append(x['content'].lower())
-        return platos_ingredientes
-    return "This xml stinks!"
+                current_index = i
+                nombre_receta = data[i]['value']
+                print(nombre_receta)   
+                while in_receta and current_index < len(data):
+                    
+                    if current_index < len(data) and data[current_index]['name'] == 'nombre':    
+                        lista_ingredientes += data[current_index]['content'].lower() + ","
+                    if data[current_index]['name'] == 'receta' and in_receta: 
+                        print(current_index)
+                        #in_receta = False
+                        add_lista = lista_ingredientes.split(",")
+                        platos_ingredientes.append([nombre_receta, add_lista[:len(add_lista)-1]])
+                        lista_ingredientes = ""
+                    current_index += 1
+        return platos_ingredientes[1:]
 
 print(get_platos_ingredientes_list(open("recetas.xml"), open("validator.dtd")))
+
 
 def plato_ingrediente(prolog):
     for y in get_platos_ingredientes(open("recetas.xml"), open("validator.dtd")):
@@ -86,3 +92,7 @@ def plato_ingrediente(prolog):
 def plato_procedimiento(prolog):
     for y in get_platos_procedimientos(open("recetas.xml"), open("validator.dtd")):
         prolog.asserta(y)
+
+def plato_ingrediente_lista(prolog):
+    for y in get_platos_ingredientes_list(open("recetas.xml"), open("validator.dtd")):
+        prolog.asserta("receta_ingredientes_lista({}, {})".format(y[0], y[1]))
