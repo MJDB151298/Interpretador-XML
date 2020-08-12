@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import scrolledtext
-#import prolog_connection as prolog_connection
+import prolog_connection as prolog_connection
 import dtd_validator
 
 
@@ -96,7 +96,7 @@ def openwindow(prolog):
     window.mainloop()
 
 if dtd_validator.start_validation(open("recetas.xml"), open("validator.dtd")):
-    #prolog = prolog_connection.startprolog()
-    openwindow("prolog")
+    prolog = prolog_connection.startprolog()
+    openwindow(prolog)
 else:
     print("Your xml stinks!")
