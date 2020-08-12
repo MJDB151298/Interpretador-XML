@@ -3,7 +3,7 @@
     <receta nombre = 'Croquetas'>
         <ingredientes>
             <ingrediente>
-                <nombre>Aceite de oliva</nombre>
+                <nombre>Aceite</nombre>
                 <calorias>100</calorias>
                 <grasas>100</grasas>
             </ingrediente>
@@ -23,12 +23,12 @@
                 <grasas>100</grasas>
             </ingrediente>
             <ingrediente>
-                <nombre>Pan Rallado</nombre>
+                <nombre>Pan_Rallado</nombre>
                 <calorias>100</calorias>
                 <grasas>100</grasas>
             </ingrediente>
             <ingrediente>
-                <nombre>Nuez moscada</nombre>
+                <nombre>Nuez_moscada</nombre>
                 <calorias>100</calorias>
                 <grasas>100</grasas>
             </ingrediente>
@@ -59,7 +59,7 @@
                 <grasas>100</grasas>
             </ingrediente>
             <ingrediente>
-                <nombre>Azúcar</nombre>
+                <nombre>Azucar</nombre>
                 <calorias>100</calorias>
                 <grasas>100</grasas>
             </ingrediente>
