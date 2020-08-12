@@ -56,8 +56,6 @@ def get_platos_procedimientos(xml_file, dtd_file):
         return platos_procedimientos
     return "This xml stinks!"
 
-print(get_platos_procedimientos(open("recetas.xml"), open("validator.dtd")))
-
 def plato_ingrediente(prolog):
     for y in get_platos_ingredientes(open("recetas.xml"), open("validator.dtd")):
         prolog.asserta(y)
