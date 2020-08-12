@@ -20,3 +20,7 @@ Q2_3=input("Ingrediente 2:\n")
 valorfinalQ2 = list(prolog.query("ingredientes_especificos(%s, %s, %s ,Y)" % (Q2_1.lower(), Q2_2.lower(), Q2_3.lower())))
 for valorQ2 in valorfinalQ2:
     print(Q2_1, Q2_2, Q2_3, "==>", valorQ2["Y"])
+
+
+batidora_procedimiento = "batir la masa".replace(" ", "_")
+valorfinalQ3 = list(prolog.query("plato_procedimiento(Plato, %s)" % batidora_procedimiento))

@@ -1,6 +1,6 @@
 import dtd_validator
 import xml_parser as parser
-from pyswip import Prolog
+#from pyswip import Prolog
 
 
 if dtd_validator.start_validation(open("recetas.xml"), open("validator.dtd")):
@@ -40,8 +40,28 @@ def get_platos_ingredientes(xml_file, dtd_file):
         return platos_ingredientes
     return "This xml stinks!"
 
+def get_platos_procedimientos(xml_file, dtd_file):
+    if dtd_validator.start_validation(xml_file, dtd_file):
+        in_receta = False
+        nombre_receta = ""
+        platos_procedimientos = []
+        for x in data:
+            if x['name'] == 'receta':
+                in_receta = True
+                nombre_receta = x['value']
+            if x['name'] == 'receta' and in_receta:
+                nombre_receta = x['value']
+            if x['name'] == 'procedimiento' and in_receta == True:
+                platos_procedimientos.append("plato_procedimiento(" + nombre_receta.lower().replace(" ", "_") + "," + x['content'].lower().replace(" ", "_") + ")") #lista con nombre receta e ingredientes
+        return platos_procedimientos
+    return "This xml stinks!"
 
+print(get_platos_procedimientos(open("recetas.xml"), open("validator.dtd")))
 
 def plato_ingrediente(prolog):
     for y in get_platos_ingredientes(open("recetas.xml"), open("validator.dtd")):
+        prolog.asserta(y)
+
+def plato_procedimiento(prolog):
+    for y in get_platos_procedimientos(open("recetas.xml"), open("validator.dtd")):
         prolog.asserta(y)
