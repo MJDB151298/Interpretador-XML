@@ -89,10 +89,10 @@ def plato_ingrediente(prolog):
     for y in get_platos_ingredientes(open("recetas.xml"), open("validator.dtd")):
         prolog.asserta(y)
 
-def plato_procedimiento(prolog):
+def batir_la_masa(prolog):
     for y in get_platos_procedimientos(open("recetas.xml"), open("validator.dtd")):
         prolog.asserta(y)
 
 def plato_ingrediente_lista(prolog):
     for y in get_platos_ingredientes_list(open("recetas.xml"), open("validator.dtd")):
-        prolog.asserta("receta_ingredientes_lista({}, {})".format(y[0], y[1]))
+        prolog.asserta("receta_ingredientes_lista({}, {})".format(y[0].lower(), y[1]))

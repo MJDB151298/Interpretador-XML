@@ -4,7 +4,7 @@ import main as plato
 prolog = Prolog()
 prolog.consult("Hechos.pl")
 plato.plato_ingrediente(prolog)
-plato.plato_procedimiento(prolog)
+plato.batir_la_masa(prolog)
 plato.plato_ingrediente_lista(prolog)
 
 Q1= input("\n¿Qué plato puedo preparar con el ingrediente...?")
@@ -28,14 +28,38 @@ for valorQ2 in valorfinalQ2:
 print("\n**¿Cuáles platos implican usar la batidora (ej.: Batir la masa) como procedimiento?**\n")
 
 batidora_procedimiento = "batir la masa".replace(" ", "_")
-valorfinalQ3 = list(prolog.query("plato_procedimiento(Plato, %s)" % batidora_procedimiento))
+valorfinalQ3 = list(prolog.query("batir_la_masa(Plato, %s)" % batidora_procedimiento))
 
 for valorQ3 in valorfinalQ3:
     print(valorQ3["Plato"])
 
 #Q4
 
-print("\n**¿Cuáles platos implican usar la batidora (ej.: Batir la masa) como procedimiento?**\n")
+print("\n**Si no tengo batidora, ¿cuáles platos puedo hacer?**\n")
 ingrediente_batidora = "batidora"
 valorfinalQ4 = list(prolog.query("noIngrediente(%s, Plato)" % ingrediente_batidora))
+
+for batidora in valorfinalQ4:
+    print(batidora["Plato"])
+
+
+#Q5
+
+print("\n**Si no tengo mantequilla, ¿qué plato puedo preparar?**\n")
+
+ingrediente_mantequilla = "mantequilla"
+valorfinalQ5 = list(prolog.query("noIngrediente(%s, Plato)" % ingrediente_mantequilla))
+
+for mantequilla in valorfinalQ5:
+    print(mantequilla["Plato"])
+
+#Q6
+print("\n**Si no tengo huevos ni tengo batidora, ¿qué platos puedo preparar?**\n")
+ingrediente_huevo = "huevo"
+
+valorfinalQ6 = list(prolog.query("noIngredientes(%s,%s, Plato)" % (ingrediente_huevo, ingrediente_batidora)))
+
+for huevo_nor_batidora in valorfinalQ6:
+    print(huevo_nor_batidora["Plato"])
+
 
