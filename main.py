@@ -67,14 +67,12 @@ def get_platos_ingredientes_list(xml_file, dtd_file):
             if data[i]['name'] == 'receta':    
                 in_receta = True
                 current_index = i
-                nombre_receta = data[i]['value']
-                print(nombre_receta)   
+                nombre_receta = data[i]['value'] 
                 while in_receta and current_index < len(data):
                     
                     if current_index < len(data) and data[current_index]['name'] == 'nombre':    
                         lista_ingredientes += data[current_index]['content'].lower() + ","
                     if data[current_index]['name'] == 'receta' and in_receta: 
-                        print(current_index)
                         #in_receta = False
                         add_lista = lista_ingredientes.split(",")
                         platos_ingredientes.append([nombre_receta, add_lista[:len(add_lista)-1]])
@@ -82,7 +80,6 @@ def get_platos_ingredientes_list(xml_file, dtd_file):
                     current_index += 1
         return platos_ingredientes[1:]
 
-print(get_platos_ingredientes_list(open("recetas.xml"), open("validator.dtd")))
 
 
 def plato_ingrediente(prolog):
