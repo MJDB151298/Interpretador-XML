@@ -1,11 +1,13 @@
 from pyswip import Prolog
 import main as plato
 
-prolog = Prolog()
-prolog.consult("Hechos.pl")
-plato.plato_ingrediente(prolog)
-plato.batir_la_masa(prolog)
-plato.plato_ingrediente_lista(prolog)
+def startprolog():
+    prolog = Prolog()
+    prolog.consult("Hechos.pl")
+    plato.plato_ingrediente(prolog)
+    plato.batir_la_masa(prolog)
+    plato.plato_ingrediente_lista(prolog)
+    return prolog
 
 Q1= input("\n¿Qué plato puedo preparar con el ingrediente...?")
 
